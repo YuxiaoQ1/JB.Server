@@ -1,0 +1,6 @@
+W:\JewelBattel\Server\Common\bin\Debug\Common.dll
+W:\JewelBattel\Server\Common\bin\Debug\Common.pdb
+W:\JewelBattel\Server\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+W:\JewelBattel\Server\Common\obj\Debug\Common.dll
+W:\JewelBattel\Server\Common\obj\Debug\Common.pdb
+W:\JewelBattel\Server\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache

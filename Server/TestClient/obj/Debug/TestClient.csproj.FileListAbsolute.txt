@@ -1,0 +1,16 @@
+D:\JewelBattel\Server\TestClient\obj\Debug\TestClient.csprojResolveAssemblyReference.cache
+D:\JewelBattel\Server\TestClient\obj\Debug\TestClient.csproj.CoreCompileInputs.cache
+D:\JewelBattel\Server\TestClient\bin\Debug\TestClient.exe.config
+D:\JewelBattel\Server\TestClient\bin\Debug\TestClient.exe
+D:\JewelBattel\Server\TestClient\bin\Debug\TestClient.pdb
+D:\JewelBattel\Server\TestClient\obj\Debug\TestClient.exe
+D:\JewelBattel\Server\TestClient\obj\Debug\TestClient.pdb
+W:\JewelBattel\Server\TestClient\bin\Debug\TestClient.exe.config
+W:\JewelBattel\Server\TestClient\bin\Debug\TestClient.exe
+W:\JewelBattel\Server\TestClient\bin\Debug\TestClient.pdb
+W:\JewelBattel\Server\TestClient\obj\Debug\TestClient.csproj.CoreCompileInputs.cache
+W:\JewelBattel\Server\TestClient\obj\Debug\TestClient.exe
+W:\JewelBattel\Server\TestClient\obj\Debug\TestClient.pdb
+W:\JewelBattel\Server\TestClient\obj\Debug\TestClient.csprojResolveAssemblyReference.cache
+W:\JewelBattel\Server\TestClient\bin\Debug\Common.dll
+W:\JewelBattel\Server\TestClient\bin\Debug\Common.pdb
