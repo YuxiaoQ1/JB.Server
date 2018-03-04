@@ -16,7 +16,7 @@ namespace Server
 
         public static MySqlConnection Connect()
         {
-            if(conn != null)
+            if(conn == null)
             {
                 conn = new MySqlConnection(CONNECTIONSTRING);
             }

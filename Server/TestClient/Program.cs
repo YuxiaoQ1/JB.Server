@@ -13,7 +13,7 @@ namespace TestClient
     {
         static private Socket serverSocket;
         static private MessageHelper messageHelper = new MessageHelper();
-        static bool run;
+        static bool run = true;
         static void Main(string[] args)
         {
             serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -67,6 +67,7 @@ namespace TestClient
                 int count = serverSocket.EndReceive(ar);
                 if (count == 0)
                 {
+                    serverSocket.Close();
                     return;
                 }
                 messageHelper.AddCount(count);

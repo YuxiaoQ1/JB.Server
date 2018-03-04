@@ -45,15 +45,26 @@ namespace Server
         {
             try
             {
-                if (clientSocket == null || clientSocket.Connected == false) return;
-                int count = clientSocket.EndReceive(ar);
-                if (count == 0)
+                if (clientSocket == null)
                 {
-                    Close();
+                    LogHelper.ERRORLOG("clientsocket is null!");
                 }
-                msgHelper.AddCount(count);
-                NetCmdHandle.Dispatch(msgHelper, this);
-                Start();
+                else if (!clientSocket.Connected)
+                {
+                    LogHelper.ERRORLOG("clientsocket disconnected!");
+                }
+                else
+                {
+                    int count = clientSocket.EndReceive(ar);
+                    if (count == 0)
+                    {
+                        Close();
+                        return;
+                    }
+                    msgHelper.AddCount(count);
+                    NetCmdHandle.Dispatch(msgHelper, this);
+                    Start();
+                }
             }
             catch (Exception e)
             {

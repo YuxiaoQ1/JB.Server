@@ -23,3 +23,13 @@ W:\JewelBattel\Server\Server\obj\Debug\Server.pdb
 W:\JewelBattel\Server\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
 W:\JewelBattel\Server\Server\bin\Debug\Common.dll
 W:\JewelBattel\Server\Server\bin\Debug\Common.pdb
+W:\JewelBattel\JB.Server\Server\Server\bin\Debug\Server.exe.config
+W:\JewelBattel\JB.Server\Server\Server\bin\Debug\Server.exe
+W:\JewelBattel\JB.Server\Server\Server\bin\Debug\Server.pdb
+W:\JewelBattel\JB.Server\Server\Server\bin\Debug\Common.dll
+W:\JewelBattel\JB.Server\Server\Server\bin\Debug\MySql.Data.dll
+W:\JewelBattel\JB.Server\Server\Server\bin\Debug\Common.pdb
+W:\JewelBattel\JB.Server\Server\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
+W:\JewelBattel\JB.Server\Server\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+W:\JewelBattel\JB.Server\Server\Server\obj\Debug\Server.exe
+W:\JewelBattel\JB.Server\Server\Server\obj\Debug\Server.pdb
