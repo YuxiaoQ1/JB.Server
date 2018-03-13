@@ -11,7 +11,7 @@ namespace Server
 {
     class SqlConnHelper
     {
-        public const string CONNECTIONSTRING = "datasource=127.0.0.1;port=3306;database=jbgame;user=jbserver;pwd=jbserver;";
+        public const string CONNECTIONSTRING = "datasource=127.0.0.1;port=3306;database=jbgame;user=root;pwd=123456;";
 
         private static MySqlConnection conn;
 
