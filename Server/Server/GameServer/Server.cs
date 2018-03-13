@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Net;
 using Server;
+using Server.Logic;
 
 namespace Server
 {
@@ -23,8 +24,19 @@ namespace Server
         private IPEndPoint IpEndpoint { get; set; }
         private Socket serverSocket;
         private List<Player> onlinePlayerList = new List<Player>();
+        private List<Room> roomList = new List<Room>();
 
         public List<Player> GetonlinePlayers => onlinePlayerList;
+
+        public bool AddRoom(Room room)
+        {
+            if(!roomList.Contains(room))
+            {
+                roomList.Add(room);
+                return true;
+            }
+            return false;
+        }
 
         public GameServer() { }
         public GameServer(string ipStr, UInt16 port)

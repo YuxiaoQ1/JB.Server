@@ -64,17 +64,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameServer\IDmaker.cs" />
+    <Compile Include="Logic\RoomCmd.cs" />
+    <Compile Include="Room\RoomIDmaker.cs" />
     <Compile Include="GameServer\NetCmdHandle.cs" />
     <Compile Include="GameServer\Server.cs" />
     <Compile Include="GameServer\SqlConnHelper.cs" />
     <Compile Include="Logic\Broadcast.cs" />
     <Compile Include="Logic\HeartBeats.cs" />
+    <Compile Include="Logic\LRECmd.cs" />
     <Compile Include="Logic\RawString.cs" />
     <Compile Include="Log\LogHelper.cs" />
     <Compile Include="Player\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Room\Room.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

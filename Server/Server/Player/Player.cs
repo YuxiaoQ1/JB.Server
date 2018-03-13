@@ -14,6 +14,13 @@ namespace Server
         Socket clientSocket;
         GameServer server;
         MessageHelper msgHelper = new MessageHelper();
+        private bool onLine = false;
+        public bool OnLine { get; set; }
+        //TODO:添加更多玩家信息
+        private string username;
+        public string Username { get; set; }
+        private int uid;
+        public int Uid { get; set; }
 
         public Player(Socket clientSocket, GameServer server)
         {

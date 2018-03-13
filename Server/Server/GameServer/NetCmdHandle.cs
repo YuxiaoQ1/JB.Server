@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Common;
-using Server.Logic;
 
 namespace Server
 {
@@ -17,6 +16,9 @@ namespace Server
             NetCmdHandles.Add(NetCmd.RAWSTRING, new Action<Player, byte[]>(Logic.RawString.OnReiceve));
             NetCmdHandles.Add(NetCmd.HEARTBEAT, new Action<Player, byte[]>(Logic.HeartBeats.OnReiceve));
             NetCmdHandles.Add(NetCmd.BROADCAST, new Action<Player, byte[]>(Logic.Broadcast.OnReiceve));
+            NetCmdHandles.Add(NetCmd.C_GS_LOGIN_REQ, new Action<Player, byte[]>(Logic.LRECmd.Login));
+            NetCmdHandles.Add(NetCmd.C_GS_REGISTER_REQ, new Action<Player, byte[]>(Logic.LRECmd.Register));
+            NetCmdHandles.Add(NetCmd.C_GS_EXIT_REQ, new Action<Player, byte[]>(Logic.LRECmd.Exit));
         }
 
         static public void Dispatch(MessageHelper messageHelper, Player player)
