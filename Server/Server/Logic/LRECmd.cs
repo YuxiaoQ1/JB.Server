@@ -26,7 +26,8 @@ namespace Server.Logic
                 return;
             }
             _InitPlayerInfo(player, userInfo);
-            player.GetSocket.Send(MessageHelper.PackData(NetCmd.S2C_LOGIN_SUCCESS, new byte[0]));
+            player.GetSocket.Send(MessageHelper.PackData(NetCmd.S2C_LOGIN_SUCCESS, 
+                MessageHelper.SerializeToBinary(_PackPlayerInfo(player))));
             player.OnLine = true;
         }
 
@@ -54,7 +55,8 @@ namespace Server.Logic
             {
                 _InitPlayerInfo(player, userInfo);
                 player.OnLine = true;
-                player.GetSocket.Send(MessageHelper.PackData(NetCmd.S2C_REGISTER_SUCCESS, new byte[0]));
+                player.GetSocket.Send(MessageHelper.PackData(NetCmd.S2C_REGISTER_SUCCESS,
+                    MessageHelper.SerializeToBinary(_PackPlayerInfo(player))));
             }
             else
             {
@@ -74,10 +76,25 @@ namespace Server.Logic
         {
             do
             {
-                player.Uid = int.Parse(reader["uid"].ToString());
+                reader.Read();
                 player.Username = reader["username"].ToString();
-                //TODO:初始化更多玩家信息
+                player.CoinCounts = int.Parse(reader["CoinCounts"].ToString());
+                player.DiamondCounts = int.Parse(reader["DiamondCounts"].ToString());
+                player.Level = int.Parse(reader["Level"].ToString());
+                player.Exp = int.Parse(reader["Exp"].ToString());
+                player.ClothId = int.Parse(reader["ClothId"].ToString()); 
             } while (false);
+        }
+
+        private static ST_PLAYER_INFO _PackPlayerInfo(Player player)
+        {
+            return new ST_PLAYER_INFO(
+                player.Username, 
+                player.CoinCounts, 
+                player.DiamondCounts, 
+                player.Level, 
+                player.Exp, 
+                player.ClothId);
         }
     }
 }

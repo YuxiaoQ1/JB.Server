@@ -64,6 +64,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fight\Fight.cs" />
+    <Compile Include="Logic\FightCmd.cs" />
+    <Compile Include="Logic\MatchCmd.cs" />
     <Compile Include="Logic\RoomCmd.cs" />
     <Compile Include="Room\RoomIDmaker.cs" />
     <Compile Include="GameServer\NetCmdHandle.cs" />

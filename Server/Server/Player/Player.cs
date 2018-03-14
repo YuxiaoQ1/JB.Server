@@ -14,13 +14,26 @@ namespace Server
         Socket clientSocket;
         GameServer server;
         MessageHelper msgHelper = new MessageHelper();
-        private bool onLine = false;
+        private bool onLine = false;    //玩家是否在线
         public bool OnLine { get; set; }
-        //TODO:添加更多玩家信息
+        private bool inRoom = false;        //玩家是否在房间内
+        public bool InRoom { get; set; }
+        public UInt64 roomId;   //玩家所在房间编号
+        private bool inGame = false;//玩家是否在游戏中
+        public bool InGame { get; set; }
+
         private string username;
         public string Username { get; set; }
-        private int uid;
-        public int Uid { get; set; }
+        private int coinCounts;
+        public int CoinCounts { get; set; }
+        private int diamondCounts;
+        public int DiamondCounts { get; set; }
+        private int level;
+        public int Level { get; set; }
+        private int exp;
+        public int Exp { get; set; }
+        private int clothId;
+        public int ClothId { get; set; }
 
         public Player(Socket clientSocket, GameServer server)
         {

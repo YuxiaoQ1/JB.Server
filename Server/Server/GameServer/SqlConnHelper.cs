@@ -103,7 +103,7 @@ namespace Server
             }
         }
         //查询
-        public static MySqlDataReader ExecuteReader(string cmdText, params MySqlParameter[] commandParameters)
+        public static MySqlDataReader ExecuteQuery(string cmdText, params MySqlParameter[] commandParameters)
         {
             MySqlCommand cmd = new MySqlCommand();
             if (conn.State != ConnectionState.Open)
@@ -122,7 +122,7 @@ namespace Server
             }
         }
         //增、删、改
-        public static int ExecuteNonQuery(string cmdText, params MySqlParameter[] commandParameters)
+        public static int Execute(string cmdText, params MySqlParameter[] commandParameters)
         {
             MySqlCommand cmd = new MySqlCommand();
             PrepareCmd(cmd, conn, null, CommandType.Text, cmdText, commandParameters);

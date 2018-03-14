@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameType.cs" />
+    <Compile Include="JewelType.cs" />
     <Compile Include="MessageHelper.cs" />
     <Compile Include="NetCmd.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

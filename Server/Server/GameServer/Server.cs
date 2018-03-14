@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Net;
-using Server;
-using Server.Logic;
+using Server.ROOM;
 
 namespace Server
 {
@@ -24,20 +21,34 @@ namespace Server
         private IPEndPoint IpEndpoint { get; set; }
         private Socket serverSocket;
         private List<Player> onlinePlayerList = new List<Player>();
-        private List<Room> roomList = new List<Room>();
+        private List<Room> relaxRoomList = new List<Room>();
 
         public List<Player> GetonlinePlayers => onlinePlayerList;
 
-        public bool AddRoom(Room room)
+        public bool AddRoomToRelax(Room room)
         {
-            if(!roomList.Contains(room))
+            if(!relaxRoomList.Contains(room))
             {
-                roomList.Add(room);
+                relaxRoomList.Add(room);
                 return true;
             }
             return false;
         }
 
+        public void RemoveRoomByRoomID(UInt64 roomId)
+        {
+            foreach(Room room in relaxRoomList)
+                if (room.RoomId == roomId)
+                    relaxRoomList.Remove(room);
+        }
+
+        public Room GetRoomByRoomID(UInt64 roomId)
+        {
+            foreach (Room room in relaxRoomList)
+                if (room.RoomId == roomId)
+                    return room;
+            return null;
+        }
         public GameServer() { }
         public GameServer(string ipStr, UInt16 port)
         {
