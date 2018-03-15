@@ -28,6 +28,11 @@ namespace Common
         S2C_ENTER_ROOM_SUCCESS = 64,
         S2C_ENTER_ROOM_FAILED = 65,
         S2C_SYNC_ROOM_PLAYER_INFO = 66, //同步房间内玩家信息
+        S2C_START_NEW_FIGHT = 67,
+        S2C_ENTER_FIGHT = 68,
+        S2C_SYNC_FIGHT_INFO = 69,   //同步战斗内玩家信息
+        S2C_GAME_OVER = 70, //向客户端广播游戏结束
+        S2C_CREATE_BOSS = 71,
 
 
         //C2S
@@ -37,6 +42,8 @@ namespace Common
         C2S_ENTER_ROOM = 203,       //玩家进入房间
         C2S_ROOM_INFO_REQ = 204,    //客户端请求房间信息
         C2S_ROOM_LIST_INFO_REQ = 205,   //请求房间信息列表
+        C2S_QUICK_MATCH = 206, //休闲模式下使用
+        C2S_START_FIGHT = 207,  //玩家发起战斗 ，创建战斗时
 
         NetCmdMax
     }
@@ -50,6 +57,7 @@ namespace Common
         }
         public string data;
     }
+    //全服广播的字符串消息：可能用于聊天大喇叭
     [Serializable]
     public class ST_BROADCAST
     {
@@ -61,6 +69,21 @@ namespace Common
         public string ID;
         public string data;
     }
+    //通用物件三维坐标，z轴默认为0
+    [Serializable]
+    public class ST_POSITION
+    {
+        public ST_POSITION(int px, int py)
+        {
+            Px = px;
+            Py = py;
+            Pz = 0;
+        }
+        public int Px;
+        public int Py;
+        public int Pz;
+    }
+    //用于登录、注册传递用户名和密码
     [Serializable]
     public class ST_LOGIN_REGISTER
     {
@@ -73,6 +96,7 @@ namespace Common
         public string password;
     }
     [Serializable]
+    //玩家信息
     public class ST_PLAYER_INFO
     {
         public ST_PLAYER_INFO(string uname, int cc, int dc, int l, int e, int cid)
@@ -90,10 +114,14 @@ namespace Common
         public int Level;
         public int Exp;
         public int ClothId;
+        public ST_POSITION position;
+        public int Hp;  //血量
+        public int Score; //当期战斗内积分
+        public int SkillType; //技能类型
     }
     
     /**
-     * 房间信息列表：房间ID，房间容量
+     * 房间列表信息：房间ID，房间容量，是否在战斗
      * 选择某模式之后，服务器仅返回所有房间的这三个信息,由客户端构造房间列表
      */
     [Serializable]
@@ -109,7 +137,7 @@ namespace Common
         public int CurrentCapacity;
         public bool isFighting;
     }
-
+    //房间内部信息：包括所有玩家信息
     [Serializable]
     public class ST_ROOM_INFO
     {
@@ -127,5 +155,33 @@ namespace Common
         public int HouseOwnerNumber;//房主编号
         public ST_PLAYER_INFO[] _PLAYER_INFOs;//房间内玩家信息
 
+    }
+
+    [Serializable]
+    public class ST_FIGHT_ID
+    {
+        public ST_FIGHT_ID(UInt64 fid)
+        {
+            FigthID = fid;
+        }
+        public UInt64 FigthID;
+    }
+    //玩家战斗内信息
+    [Serializable]
+    public class ST_PLAYER_FIGHT_INFO
+    {
+        public ST_PLAYER_FIGHT_INFO(ST_POSITION pos, int hp, int score, int animationType, ST_POSITION skillPos)
+        {
+            Position = pos;
+            Hp = hp;
+            Score = score;
+            AnimationType = animationType;
+            SkillPosition = skillPos;
+        }
+        public ST_POSITION Position;
+        public int Hp;
+        public int Score;
+        public int AnimationType;
+        public ST_POSITION SkillPosition; //结合玩家pos可以绘制出技能
     }
 }

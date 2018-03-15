@@ -2,7 +2,7 @@
 
 namespace Server
 {
-    static class RoomIDmaker
+    static class IDmaker
     {
         static UInt64 lastID = 10000;
  

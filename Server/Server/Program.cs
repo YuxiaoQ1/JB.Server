@@ -21,6 +21,7 @@ namespace Server
                 Console.Write("console >> ");
                 DoCommandProcess(Console.ReadLine(), out run, gameServer);
             }
+            SqlConnHelper.Close();
             Console.ReadKey();
         }
 
@@ -45,7 +46,7 @@ namespace Server
                 {
                     if(p != null)
                     {
-                        Console.WriteLine(p.GetSocket.RemoteEndPoint.ToString());
+                        Console.WriteLine("Uname [{0}]  IP [{1}]", p.Username, p.GetSocket.RemoteEndPoint.ToString());
                     }
                 }
             }

@@ -68,7 +68,7 @@
     <Compile Include="Logic\FightCmd.cs" />
     <Compile Include="Logic\MatchCmd.cs" />
     <Compile Include="Logic\RoomCmd.cs" />
-    <Compile Include="Room\RoomIDmaker.cs" />
+    <Compile Include="Room\IDmaker.cs" />
     <Compile Include="GameServer\NetCmdHandle.cs" />
     <Compile Include="GameServer\Server.cs" />
     <Compile Include="GameServer\SqlConnHelper.cs" />

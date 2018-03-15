@@ -26,9 +26,9 @@ namespace Server
             NetCmdHandles.Add(NetCmd.C2S_ENTER_ROOM, new Action<Player, byte[]>(RoomCmd.EnterRoom));//进入房间
             NetCmdHandles.Add(NetCmd.C2S_EXIT_ROOM, new Action<Player, byte[]>(RoomCmd.ExitRoom));//退出房间
 
-            //快速匹配
-            //请求房间列表
-            //请求房间内玩家信息
+            NetCmdHandles.Add(NetCmd.C2S_QUICK_MATCH, new Action<Player, byte[]>(Logic.MatchCmd.QuickMatch)); //休闲模式快速匹配
+            
+            
         }
 
         static public void Dispatch(MessageHelper messageHelper, Player player)

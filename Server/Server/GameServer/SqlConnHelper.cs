@@ -11,7 +11,7 @@ namespace Server
 {
     class SqlConnHelper
     {
-        public const string CONNECTIONSTRING = "datasource=127.0.0.1;port=3306;database=jbgame;user=root;pwd=123456;";
+        public const string CONNECTIONSTRING = "datasource=127.0.0.1;port=3306;database=jbserver;user=root;pwd=123456;";
 
         private static MySqlConnection conn;
 
@@ -23,7 +23,8 @@ namespace Server
             }
             try
             {
-                conn.Open();
+                if (conn.State != ConnectionState.Open)
+                    conn.Open();
                 return conn;
             }
             catch (Exception e)

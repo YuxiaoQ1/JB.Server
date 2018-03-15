@@ -23,6 +23,10 @@ namespace TestClient
             serverSocket.BeginReceive(messageHelper.Buffer, messageHelper.GetStartIndex, messageHelper.GetRemainBytes, SocketFlags.None, _OnRecieveData, null);
             _StartHeartBeats();
 
+            ST_LOGIN_REGISTER sT_LOGIN_REGISTER = new ST_LOGIN_REGISTER("覃宇骁", "123456");
+            serverSocket.Send(MessageHelper.PackData(NetCmd.C_GS_REGISTER_REQ, MessageHelper.SerializeToBinary(sT_LOGIN_REGISTER)));
+
+
             string s;
             while((s = Console.ReadLine()) != string.Empty && run)
             {

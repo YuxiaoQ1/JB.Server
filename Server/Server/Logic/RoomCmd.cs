@@ -12,10 +12,11 @@ namespace Server.ROOM
     {
         public static void CreateRoom(Player player, byte[] data)
         {
-            Room room = new Room(RoomIDmaker.GetNewID(), player);
+            Room room = new Room(IDmaker.GetNewID(), player);
 
             if(player.GetGameServer.AddRoomToRelax(room))
             {
+                player.roomId = room.RoomId;
                 //将房间信息发送到客户端
                 ST_PLAYER_INFO[] sT_PLAYER_INFOs = new ST_PLAYER_INFO[1];//房间内所有玩家信息，目前只有房主
                 sT_PLAYER_INFOs[0] = new ST_PLAYER_INFO(player.Username, player.CoinCounts, player.DiamondCounts, player.Level,

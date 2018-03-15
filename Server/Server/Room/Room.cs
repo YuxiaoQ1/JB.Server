@@ -18,11 +18,7 @@ namespace Server.ROOM
         public int CurrentPlayerNum = 0;//当前房间人数
         public bool isFighting = false; //当前房间是否在战斗中,false表示准备中，true为战斗中
 
-        //TODO:定时器==>>写到Fight中处理
-        Timer GameDurationTimer;//游戏时长倒计时 10分钟
-        Timer CreateBossTimer;  //生成Boss计时器 2分钟
-        Timer CreateJewelTimer; //生成宝石计时器 30s
-        Timer SyncPositionTimer;//玩家位置同步计时器 0.05s
+        
 
         public Room(UInt64 rid, Player houseowner)
         {
@@ -58,6 +54,7 @@ namespace Server.ROOM
                 {
                     players[i] = player;//将当前玩家加入房间
                     player.InRoom = true;
+                    player.roomId = RoomId;
                     CurrentPlayerNum++;
                     break;
                 }

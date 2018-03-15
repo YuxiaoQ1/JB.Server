@@ -21,9 +21,21 @@ namespace Server
         private IPEndPoint IpEndpoint { get; set; }
         private Socket serverSocket;
         private List<Player> onlinePlayerList = new List<Player>();
-        private List<Room> relaxRoomList = new List<Room>();
-
         public List<Player> GetonlinePlayers => onlinePlayerList;
+        private List<Room> relaxRoomList = new List<Room>();
+        public List<Room> GetRoomList => relaxRoomList;
+        private List<Fight> fightList = new List<Fight>();
+        public List<Fight> GetFightList => fightList;
+
+        public Fight GetFightByFightID(UInt64 fid)
+        {
+            foreach(Fight fight in fightList)
+            {
+                if (fight.fightID == fid)
+                    return fight;
+            }
+            return null;
+        }
 
         public bool AddRoomToRelax(Room room)
         {

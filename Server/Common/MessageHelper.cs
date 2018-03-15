@@ -10,6 +10,12 @@ namespace Common
     public class MessageHelper
     {
         const int buffer_init_size = 100;
+
+        public static ST_FIGHT_ID DeserializeWithBinary(object dta)
+        {
+            throw new NotImplementedException();
+        }
+
         private byte[] buffer;  //接收缓冲区
         private int processPos, currentPos;            //处理指针，记录未处理的数据的起始位置
         private Queue<byte[]> msgs = new Queue<byte[]>();              //接收到的消息队列

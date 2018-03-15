@@ -16,19 +16,21 @@ namespace Server.Logic
                 player.Close();
                 return;
             }
-            string sql = string.Format("select * from t_user where username = '%s' and password = ''", info.username, info.password);
+            string sql = string.Format("select * from t_user where username = '{0}' and password = '{1}'", info.username, info.password);
             MySqlDataReader userInfo = SqlConnHelper.ExecuteQuery(sql);
             if(userInfo == null)
             {
                 LogHelper.ERRORLOG("User not exit!");
                 player.GetSocket.Send(MessageHelper.PackData(NetCmd.S2C_LOGIN_FAILED, new byte[0]));
                 player.Close();
+                userInfo.Close();
                 return;
             }
             _InitPlayerInfo(player, userInfo);
             player.GetSocket.Send(MessageHelper.PackData(NetCmd.S2C_LOGIN_SUCCESS, 
                 MessageHelper.SerializeToBinary(_PackPlayerInfo(player))));
             player.OnLine = true;
+            userInfo.Close();
         }
 
         public static void Register(Player player, byte[] data)
@@ -41,19 +43,16 @@ namespace Server.Logic
                 player.GetSocket.Send(MessageHelper.PackData(NetCmd.S2C_REGISTER_FAILED, new byte[0]));
                 return;
             }
-            string sql = string.Format("select * from t_user where username = '%s'", info.username);
-            MySqlDataReader userInfo = SqlConnHelper.ExecuteQuery(sql);
-            if (userInfo == null)
-            {
-                LogHelper.ERRORLOG("User not exit!");
-                player.GetSocket.Send(MessageHelper.PackData(NetCmd.S2C_REGISTER_FAILED, new byte[0]));
-                return;
-            }
+            
             //插入到数据库
-            sql = string.Format("insert into t_user(username, password) values('%s', '%s')", info.username, info.password);
+            string sql = string.Format("insert into t_user(username, password) values('{0}', '{1}')", info.username, info.password);
             if (SqlConnHelper.Execute(sql) > 0)
             {
+                sql = string.Format("select * from t_user where username = '{0}'", info.username);
+                MySqlDataReader userInfo = SqlConnHelper.ExecuteQuery(sql);
+
                 _InitPlayerInfo(player, userInfo);
+                userInfo.Close();
                 player.OnLine = true;
                 player.GetSocket.Send(MessageHelper.PackData(NetCmd.S2C_REGISTER_SUCCESS,
                     MessageHelper.SerializeToBinary(_PackPlayerInfo(player))));
