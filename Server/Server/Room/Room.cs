@@ -63,7 +63,7 @@ namespace Server.ROOM
 
         public void SyncRoomInfoToAllPlayer()
         {
-            ST_PLAYER_INFO[] sT_PLAYER_INFOs = new ST_PLAYER_INFO[capacity];
+            ST_PLAYER_BASE_INFO[] sT_PLAYER_INFOs = new ST_PLAYER_BASE_INFO[capacity];
             for (int i = 0; i < capacity; i++)
             {
                 if (players[i] == null)
@@ -71,13 +71,15 @@ namespace Server.ROOM
                     sT_PLAYER_INFOs[i] = null;
                     continue;
                 }
-                sT_PLAYER_INFOs[i] = new ST_PLAYER_INFO(players[i].Username, players[i].CoinCounts, players[i].DiamondCounts, players[i].Level,
+                sT_PLAYER_INFOs[i] = new ST_PLAYER_BASE_INFO(players[i].Username,
+                    players[i].CoinCounts, players[i].DiamondCounts, players[i].Level,
                     players[i].Exp, players[i].ClothId);
             }
             for (int i = 0; i < capacity; i++)
             {
                 if (players[i] != null)
-                    players[i].GetSocket.Send(MessageHelper.PackData(NetCmd.S2C_SYNC_ROOM_PLAYER_INFO, MessageHelper.SerializeToBinary(sT_PLAYER_INFOs)));
+                    players[i].GetSocket.Send(MessageHelper.PackData(NetCmd.S2C_SYNC_ROOM_PLAYER_INFO, 
+                        MessageHelper.SerializeToBinary(sT_PLAYER_INFOs)));
             }
         }
 

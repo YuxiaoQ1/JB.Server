@@ -27,7 +27,7 @@ namespace Server
             NetCmdHandles.Add(NetCmd.C2S_EXIT_ROOM, new Action<Player, byte[]>(RoomCmd.ExitRoom));//退出房间
 
             NetCmdHandles.Add(NetCmd.C2S_QUICK_MATCH, new Action<Player, byte[]>(Logic.MatchCmd.QuickMatch)); //休闲模式快速匹配
-            
+            NetCmdHandles.Add(NetCmd.C2S_START_FIGHT, new Action<Player, byte[]>(Logic.FightCmd.StartFight)); //启动战斗
             
         }
 

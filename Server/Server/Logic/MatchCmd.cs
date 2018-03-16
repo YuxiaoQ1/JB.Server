@@ -55,7 +55,7 @@ namespace Server.Logic
                     player.GetSocket.Send(MessageHelper.PackData(NetCmd.S2C_ENTER_FIGHT, fightData));
                     LogHelper.DEBUGLOG("Player [{0}] enter fight [{1}].", player.Username, fight.fightID);
                 }
-                //这里每天同步操作是因为每0.05s
+                //这里没有同步操作是因为每0.05s
                 //同步一次，几乎在玩家进入战斗的
                 //同时进行同步操作
             }

@@ -85,9 +85,9 @@ namespace Server.Logic
             } while (false);
         }
 
-        private static ST_PLAYER_INFO _PackPlayerInfo(Player player)
+        private static ST_PLAYER_BASE_INFO _PackPlayerInfo(Player player)
         {
-            return new ST_PLAYER_INFO(
+            return new ST_PLAYER_BASE_INFO(
                 player.Username, 
                 player.CoinCounts, 
                 player.DiamondCounts, 

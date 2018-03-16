@@ -18,7 +18,8 @@ namespace Server
         public bool InRoom = false;
         public UInt64 roomId;   //玩家所在房间编号
         public bool InGame = false;
-        
+        public ST_PLAYER_FIGHT_INFO FightInfo;
+
         public string Username { get; set; }
         public int CoinCounts { get; set; }
         public int DiamondCounts { get; set; }

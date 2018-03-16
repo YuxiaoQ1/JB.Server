@@ -18,8 +18,8 @@ namespace Server.ROOM
             {
                 player.roomId = room.RoomId;
                 //将房间信息发送到客户端
-                ST_PLAYER_INFO[] sT_PLAYER_INFOs = new ST_PLAYER_INFO[1];//房间内所有玩家信息，目前只有房主
-                sT_PLAYER_INFOs[0] = new ST_PLAYER_INFO(player.Username, player.CoinCounts, player.DiamondCounts, player.Level,
+                ST_PLAYER_BASE_INFO[] sT_PLAYER_INFOs = new ST_PLAYER_BASE_INFO[1];//房间内所有玩家信息，目前只有房主
+                sT_PLAYER_INFOs[0] = new ST_PLAYER_BASE_INFO(player.Username, player.CoinCounts, player.DiamondCounts, player.Level,
                     player.Exp, player.ClothId);
                 ST_ROOM_INFO _ROOM_INFO = new ST_ROOM_INFO(room.RoomId, room.GetCapacity, room.CurrentPlayerNum, room.HouseOwnerNumber, sT_PLAYER_INFOs);
                 player.GetSocket.Send(MessageHelper.PackData(NetCmd.S2C_CREATE_ROOM_SUCCESS, MessageHelper.SerializeToBinary(_ROOM_INFO)));

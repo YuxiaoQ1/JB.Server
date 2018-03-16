@@ -33,7 +33,8 @@ namespace Common
         S2C_SYNC_FIGHT_INFO = 69,   //同步战斗内玩家信息
         S2C_GAME_OVER = 70, //向客户端广播游戏结束
         S2C_CREATE_BOSS = 71,
-
+        S2C_SYNC_REMAINING_TIME = 72, //同步战斗剩余时间
+        S2C_CREATE_JEWEL = 73,
 
         //C2S
         C2S_EXIT_GAME = 200,    //玩家退出战斗
@@ -96,10 +97,10 @@ namespace Common
         public string password;
     }
     [Serializable]
-    //玩家信息
-    public class ST_PLAYER_INFO
+    //玩家基础信息
+    public class ST_PLAYER_BASE_INFO
     {
-        public ST_PLAYER_INFO(string uname, int cc, int dc, int l, int e, int cid)
+        public ST_PLAYER_BASE_INFO(string uname, int cc, int dc, int l, int e, int cid)
         {
             Username = uname;
             CoinCounts = cc;
@@ -114,10 +115,6 @@ namespace Common
         public int Level;
         public int Exp;
         public int ClothId;
-        public ST_POSITION position;
-        public int Hp;  //血量
-        public int Score; //当期战斗内积分
-        public int SkillType; //技能类型
     }
     
     /**
@@ -141,7 +138,7 @@ namespace Common
     [Serializable]
     public class ST_ROOM_INFO
     {
-        public ST_ROOM_INFO(UInt64 rid, int cap, int cpn, int hon, ST_PLAYER_INFO[] pi)
+        public ST_ROOM_INFO(UInt64 rid, int cap, int cpn, int hon, ST_PLAYER_BASE_INFO[] pi)
         {
             roomID = rid;
             Capacity = cap;
@@ -153,10 +150,10 @@ namespace Common
         public int Capacity;
         public int CurrentPlayerNum;
         public int HouseOwnerNumber;//房主编号
-        public ST_PLAYER_INFO[] _PLAYER_INFOs;//房间内玩家信息
+        public ST_PLAYER_BASE_INFO[] _PLAYER_INFOs;//房间内玩家信息
 
     }
-
+    //战斗ID
     [Serializable]
     public class ST_FIGHT_ID
     {
@@ -170,18 +167,90 @@ namespace Common
     [Serializable]
     public class ST_PLAYER_FIGHT_INFO
     {
-        public ST_PLAYER_FIGHT_INFO(ST_POSITION pos, int hp, int score, int animationType, ST_POSITION skillPos)
+        public ST_PLAYER_FIGHT_INFO(string username, ST_POSITION pos, int hp, int score, int animationType, ST_POSITION skillPos)
         {
+            Username = username;
             Position = pos;
             Hp = hp;
             Score = score;
             AnimationType = animationType;
             SkillPosition = skillPos;
         }
+        public string Username;
         public ST_POSITION Position;
         public int Hp;
         public int Score;
-        public int AnimationType;
+        public int AnimationType; //技能动画、移动动画，表示技能动画时和玩家技能类型一致
         public ST_POSITION SkillPosition; //结合玩家pos可以绘制出技能
+    }
+    //宝石信息
+    [Serializable]
+    public class ST_JEWEL_INFO
+    {
+        public ST_JEWEL_INFO(int jewelNum, JewelType jewelType)
+        {
+            Number = jewelNum;
+            Type = jewelType;
+        }
+        public int Number;
+        public JewelType Type;
+    }
+    //Boss信息
+    [Serializable]
+    public class ST_BOSS_INFO
+    {
+        public ST_BOSS_INFO(int hp)
+        {
+            Hp = hp;
+        }
+        int Hp; //boss血量
+    }
+    //战斗Fight信息
+    [Serializable]
+    public class ST_FIGHT_INFO
+    {
+        public ST_FIGHT_INFO(UInt64 fid, ST_BOSS_INFO bd, ST_PLAYER_FIGHT_INFO[] pd, ST_JEWEL_INFO[] jd)
+        {
+            FightID = fid;
+            BossData = bd;
+            PlayerData = pd;
+            JewelData = jd;
+        }
+        public UInt64 FightID;
+        public ST_BOSS_INFO BossData;
+        public ST_PLAYER_FIGHT_INFO[] PlayerData;
+        public ST_JEWEL_INFO[] JewelData;
+    }
+    //玩家战绩
+    [Serializable]
+    public class ST_PLAYER_RECORD
+    {
+        public ST_PLAYER_RECORD(string username, int score)
+        {
+            Username = username;
+            Score = score;
+        }
+        public string Username;
+        public int Score;
+    }
+    //战斗结束结果
+    [Serializable]
+    public class ST_FIGHT_OVER_RESULT
+    {
+        public ST_FIGHT_OVER_RESULT(ST_PLAYER_RECORD[] records)
+        {
+            PlayerRecords = records;
+        }
+        public ST_PLAYER_RECORD[] PlayerRecords;
+    }
+    //剩余时间
+    [Serializable]
+    public class ST_REMAINING_TIME
+    {
+        public ST_REMAINING_TIME(int remaining)
+        {
+            RemainingTime = remaining;
+        }
+        public int RemainingTime;
     }
 }
