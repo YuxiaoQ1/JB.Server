@@ -12,6 +12,6 @@ W:\JewelBattel\JB.Server\Server\Common\obj\Debug\Common.pdb
 E:\JBServer\Server\Common\bin\Debug\Common.dll
 E:\JBServer\Server\Common\bin\Debug\Common.pdb
 E:\JBServer\Server\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
-E:\JBServer\Server\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 E:\JBServer\Server\Common\obj\Debug\Common.dll
 E:\JBServer\Server\Common\obj\Debug\Common.pdb
+E:\JBServer\Server\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache

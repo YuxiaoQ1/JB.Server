@@ -7,7 +7,10 @@ namespace Server.Logic
     {
         public static void Login(Player player, byte[] data)
         {
+            
             ST_LOGIN_REGISTER info = (ST_LOGIN_REGISTER)MessageHelper.DeserializeWithBinary(data);
+
+            LogHelper.DEBUGLOG("Login Info U:[{0}]  P:[{1}]", info.username, info.password);
             MySqlConnection conn = SqlConnHelper.Connect();
             if(conn == null)
             {

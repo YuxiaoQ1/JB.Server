@@ -19,9 +19,20 @@ namespace Common
         private byte[] buffer;  //接收缓冲区
         private int processPos, currentPos;            //处理指针，记录未处理的数据的起始位置
         private Queue<byte[]> msgs = new Queue<byte[]>();              //接收到的消息队列
-        public byte[] Buffer => buffer;
-        public int GetStartIndex => currentPos;
-        public int GetRemainBytes => buffer.Length - currentPos;
+        public byte[] Buffer 
+		{
+			get { return buffer; }
+		}
+        public int GetStartIndex
+        {
+			get { return currentPos; }
+		}
+			
+		public int GetRemainBytes
+        {
+			get { return buffer.Length - currentPos; }
+		}
+			
 
         public MessageHelper()
         {
@@ -115,6 +126,24 @@ namespace Common
                 data = msgdata.Skip(4).ToArray();
             }
         }
+
+        public Dictionary<NetCmd, byte[]> ReadMessageForClient()
+        {
+            NetCmd cmd = NetCmd.RAWSTRING;
+            byte[] data = null;
+            if (msgs.Count == 0) return null;
+            byte[] msgdata = msgs.Dequeue();
+            NetCmd netCmd = (NetCmd)BitConverter.ToInt32(msgdata, 0);
+            if (netCmd >= NetCmd.NetCmdMin && netCmd <= NetCmd.NetCmdMax)
+            {
+                cmd = netCmd;
+                data = msgdata.Skip(4).ToArray();
+            }
+            Dictionary<NetCmd, byte[]> result = new Dictionary<NetCmd, byte[]>();
+            result.Add(cmd, data);
+            return result;
+        }
+
 
         /// <summary>
         /// 打包数据
