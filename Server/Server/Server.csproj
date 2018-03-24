@@ -50,6 +50,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Common.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data">
       <HintPath>lib\MySql.Data.dll</HintPath>
     </Reference>
@@ -84,12 +88,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{cbbaee1d-73c7-4431-a9fe-48a327ec3fbb}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

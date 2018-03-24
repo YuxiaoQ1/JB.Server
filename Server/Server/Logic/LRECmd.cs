@@ -32,6 +32,7 @@ namespace Server.Logic
             _InitPlayerInfo(player, userInfo);
             player.GetSocket.Send(MessageHelper.PackData(NetCmd.S2C_LOGIN_SUCCESS, 
                 MessageHelper.SerializeToBinary(_PackPlayerInfo(player))));
+            LogHelper.DEBUGLOG("send to client login success!");
             player.OnLine = true;
             userInfo.Close();
         }

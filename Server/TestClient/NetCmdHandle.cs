@@ -15,6 +15,7 @@ namespace TestClient
         {
             NetCmdHandles.Add(NetCmd.RAWSTRING, new Action<Socket, byte[]>(Logic.RawString.OnReiceve));
             NetCmdHandles.Add(NetCmd.BROADCAST, new Action<Socket, byte[]>(Logic.BroadCast.OnReiceve));
+            NetCmdHandles.Add(NetCmd.S2C_LOGIN_SUCCESS, new Action<Socket, byte[]>(Logic.LoginSuccess.OnReceive));
         }
 
         static public void Dispatch(MessageHelper messageHelper, Socket server)

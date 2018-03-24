@@ -24,4 +24,14 @@ namespace TestClient.Logic
             Console.WriteLine("来自[{0}]的玩家发送了\n\t {1}", rawString.ID, rawString.data);
         }
     }
+
+    class LoginSuccess
+    {
+        static public void OnReceive(Socket server, byte[] data)
+        {
+            ST_PLAYER_BASE_INFO playerBaseInfo = (ST_PLAYER_BASE_INFO)MessageHelper.DeserializeWithBinary(data);
+            Console.WriteLine("player info:name[{0}] DC[{1}] CC[{2}]",
+                playerBaseInfo.Username, playerBaseInfo.DiamondCounts, playerBaseInfo.CoinCounts);
+        }
+    }
 }
