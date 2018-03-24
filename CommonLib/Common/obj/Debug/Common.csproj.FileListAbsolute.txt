@@ -1,0 +1,11 @@
+C:\Users\LJ\Desktop\Common\Common\bin\Debug\Common.dll
+C:\Users\LJ\Desktop\Common\Common\bin\Debug\Common.pdb
+C:\Users\LJ\Desktop\Common\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+C:\Users\LJ\Desktop\Common\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Users\LJ\Desktop\Common\Common\obj\Debug\Common.dll
+C:\Users\LJ\Desktop\Common\Common\obj\Debug\Common.pdb
+E:\JBServer\CommonLib\Common\bin\Debug\Common.dll
+E:\JBServer\CommonLib\Common\bin\Debug\Common.pdb
+E:\JBServer\CommonLib\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+E:\JBServer\CommonLib\Common\obj\Debug\Common.dll
+E:\JBServer\CommonLib\Common\obj\Debug\Common.pdb
