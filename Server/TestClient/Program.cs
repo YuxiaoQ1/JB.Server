@@ -27,7 +27,7 @@ namespace TestClient
             //ST_LOGIN_REGISTER sT_REGISTER = new ST_LOGIN_REGISTER("lisi", "123456");
             //serverSocket.Send(MessageHelper.PackData(NetCmd.C_GS_REGISTER_REQ, MessageHelper.SerializeToBinary(sT_REGISTER)));
             //登录测试 done
-            ST_LOGIN_REGISTER sT_LOGIN = new ST_LOGIN_REGISTER("zhangsan", "123456");
+            ST_LOGIN_REGISTER sT_LOGIN = new ST_LOGIN_REGISTER("zhangsan1234", "123456");
             serverSocket.Send(MessageHelper.PackData(NetCmd.C_GS_LOGIN_REQ, MessageHelper.SerializeToBinary(sT_LOGIN)));
             //匹配测试
 

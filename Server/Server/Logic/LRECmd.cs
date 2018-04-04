@@ -21,7 +21,7 @@ namespace Server.Logic
             }
             string sql = string.Format("select * from t_user where username = '{0}' and password = '{1}'", info.username, info.password);
             MySqlDataReader userInfo = SqlConnHelper.ExecuteQuery(sql);
-            if(userInfo == null)
+            if(!userInfo.Read())
             {
                 LogHelper.ERRORLOG("User not exit!");
                 player.GetSocket.Send(MessageHelper.PackData(NetCmd.S2C_LOGIN_FAILED, new byte[0]));
@@ -79,7 +79,7 @@ namespace Server.Logic
         {
             do
             {
-                reader.Read();
+                //reader.Read();
                 player.Username = reader["username"].ToString();
                 player.CoinCounts = int.Parse(reader["CoinCounts"].ToString());
                 player.DiamondCounts = int.Parse(reader["DiamondCounts"].ToString());
